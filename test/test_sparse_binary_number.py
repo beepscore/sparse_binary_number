@@ -28,14 +28,23 @@ class TestSparseBinaryNumber(unittest.TestCase):
     def test_is_sparse_0b1(self):
         self.assertEqual(True, sparse_binary_number.is_sparse(0b1))
 
-    def test_is_sparse_0b10(self):
-        self.assertEqual(True, sparse_binary_number.is_sparse(0b10))
-
-    def test_is_sparse_0b11(self):
-        self.assertEqual(False, sparse_binary_number.is_sparse(0b11))
-
-    # TODO: Consider change test data to a list of tuples
-    # test_data = [(0, True), (1, True), (2, True), (3, False) ]
+    def test_is_sparse(self):
+        test_data = [
+            (0, True),
+            (0b1, True),
+            (0b10, True),
+            (0b11, False),
+            (0b100, True),
+            (0b101, True),
+            (5, True),
+            (0b110, False),
+            (0b1010010010001010001, True),
+            (0b1100010010001010001, False)
+        ]
+        for (number, expected) in test_data:
+            self.assertEqual(expected, sparse_binary_number.is_sparse(number),
+                             "expected {0} for number 0b{1:b}"
+                             .format(str(expected), number))
 
 
 if __name__ == "__main__":
