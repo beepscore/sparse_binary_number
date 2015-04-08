@@ -5,7 +5,8 @@ def is_sparse(number):
     # TODO: Fix method to pass tests
     # bits = bits(number)
     # for bit in bits:
-    #     if ((bit == 1) and ((previous_bit == 1) or (next_bit == 1))):
+    #     if ((bit == 1) and (previous_bit == 1)):
+    #         # number has two consecutive 1s
     #         return False
     # return True
 
