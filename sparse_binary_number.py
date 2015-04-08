@@ -16,18 +16,18 @@ def is_sparse(number):
         # edge case. List explicitly for clarity. Define to be True
         return True
     else:
-        bits_list = bits(number)
+        bits = bits_list(number)
         # start power_of_2 at 1 so previous_bit index won't be out of list range
-        for power_of_2 in range(1, len(bits_list)):
-            current_bit = bits_list[power_of_2]
-            previous_bit = bits_list[power_of_2 - 1]
+        for power_of_2 in range(1, len(bits)):
+            current_bit = bits[power_of_2]
+            previous_bit = bits[power_of_2 - 1]
             if ((current_bit == 1) and (previous_bit == 1)):
                 # number has two consecutive 1s
                 return False
         return True
 
 
-def bits(number):
+def bits_list(number):
     """return list of bits in number
 
     Keyword arguments:
