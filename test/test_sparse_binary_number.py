@@ -55,6 +55,9 @@ class TestSparseBinaryNumber(unittest.TestCase):
                              "expected {0} for number 0b{1:b}"
                              .format(str(expected), number))
 
+    def test_next_sparse(self):
+        self.assertEqual(5, sparse_binary_number.next_sparse(0b100))
+
 
 if __name__ == "__main__":
     unittest.main()

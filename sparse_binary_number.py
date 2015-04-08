@@ -1,6 +1,17 @@
 #!/usr/bin/env python3
 
 
+def next_sparse(sparse_number):
+    """return next larger sparse number
+
+    Keyword arguments:
+        sparse_number -- a sparse number, as defined by is_sparse
+    """
+
+    # TODO: generalize method
+    return 5
+
+
 def is_sparse(number):
     """return True if number binary digit 1s have no adjacent 1s.
 
