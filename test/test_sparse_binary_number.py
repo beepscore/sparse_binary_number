@@ -9,6 +9,19 @@ class TestSparseBinaryNumber(unittest.TestCase):
     def setUp(self):
         pass
 
+    def test_bits_0(self):
+        self.assertEqual([0], sparse_binary_number.bits(0))
+
+    def test_bits_1(self):
+        self.assertEqual([1], sparse_binary_number.bits(0b1))
+
+    def test_bits_3(self):
+        self.assertEqual([1, 1], sparse_binary_number.bits(0b11))
+
+    def test_bits_111000101101(self):
+        self.assertEqual([1, 1, 1, 0, 0, 0, 1, 0, 1, 1, 0, 1],
+                         sparse_binary_number.bits(0b111000101101))
+
     def test_is_sparse_0(self):
         self.assertEqual(True, sparse_binary_number.is_sparse(0))
 
