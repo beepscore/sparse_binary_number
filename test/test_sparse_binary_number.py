@@ -28,6 +28,15 @@ class TestSparseBinaryNumber(unittest.TestCase):
     def test_is_sparse_0b1(self):
         self.assertEqual(True, sparse_binary_number.is_sparse(0b1))
 
+    def test_is_sparse_trailing_ones(self):
+        self.assertEqual(False, sparse_binary_number.is_sparse(0b000011))
+
+    def test_is_sparse_middle_ones(self):
+        self.assertEqual(False, sparse_binary_number.is_sparse(0b001100))
+
+    def test_is_sparse_leading_ones(self):
+        self.assertEqual(False, sparse_binary_number.is_sparse(0b110000))
+
     def test_is_sparse(self):
         test_data = [
             (0, True),
