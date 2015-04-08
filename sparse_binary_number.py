@@ -6,10 +6,21 @@ def next_sparse(sparse_number):
 
     Keyword arguments:
         sparse_number -- a sparse number, as defined by is_sparse
+
+    return None if reached internal limit without finding a next sparse.
     """
 
-    # TODO: generalize method
-    return 5
+    # increment until possible_sparse is_sparse or reach limit.
+    # This algorithm uses "brute force".
+    # TODO: make algorithm more efficient
+
+    # limit is arbitrary in Python
+    # http://stackoverflow.com/questions/5470693/python-number-limit
+    limit = 2 ** 32
+    for possible_sparse in range(sparse_number + 1, limit):
+        if is_sparse(possible_sparse):
+            return possible_sparse
+    return None
 
 
 def is_sparse(number):

@@ -46,17 +46,6 @@ power of 2
 101010
 ...
 
-## Solution strategy
-Add method is_sparse() to take an integer argument and return boolean.
-Add tests.
-
-### Brute force solution
-Start with starting sparse number, increment until is_sparse.
-
-### More efficient solution
-Write method to generate sparse numbers.
-Write method to take a sparse number and return the next sparse number.
-
 ## Run unit tests
 To run tests in terminal, cd to top level directory that contains subdirectory test
 
