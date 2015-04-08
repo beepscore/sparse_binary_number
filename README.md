@@ -57,8 +57,6 @@ Write method to take a sparse number and return the next sparse number.
 ## Run unit tests
 To run tests in terminal, cd to top level directory that contains subdirectory test
 
-    ➜  sparse_binary_number  python3 -m unittest discover test
-    ..F.
-    FAIL: test_is_sparse_0b10 (test_sparse_binary_number.TestSparseBinaryNumber)
-    Ran 4 tests in 0.001s
-    FAILED (failures=1)
+    ➜  sparse_binary_number git:(master) ✗ python3 -m unittest discover test
+    ........
+    Ran 8 tests in 0.001s

@@ -2,20 +2,20 @@
 
 
 def is_sparse(number):
-    # TODO: Fix method to pass tests
-    # bits = bits(number)
-    # for bit in bits:
-    #     if ((bit == 1) and (previous_bit == 1)):
-    #         # number has two consecutive 1s
-    #         return False
-    # return True
-
     if number == 0:
         return True
     if number == 1:
         return True
     else:
-        return False
+        bits_list = bits(number)
+        # start power_of_2 at 1 so previous_bit index won't be out of list range
+        for power_of_2 in range(1, len(bits_list)):
+            current_bit = bits_list[power_of_2]
+            previous_bit = bits_list[power_of_2 - 1]
+            if ((current_bit == 1) and (previous_bit == 1)):
+                # number has two consecutive 1s
+                return False
+        return True
 
 
 def bits(number):
