@@ -8,11 +8,14 @@ http://www.careercup.com/question?id=5186975457869824
 # Results
 
 ## Background
-Define a sparse number as an integer whose binary digits have no adjacent 1s.
+Define a "sparse number" as an integer whose binary digit 1s have no adjacent 1s.
 
 ## Assumptions
 Assume number is >= 0.
 Initially, ignore integer maximum size and potential rollover.
+
+0b1 is an edge case, could choose to define it either way.
+Per problem statement define it as sparse.
 
 ## Manually list sparse numbers to observe pattern.
 
