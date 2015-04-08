@@ -2,9 +2,18 @@
 
 
 def is_sparse(number):
+    """return True if number binary digit 1s have no adjacent 1s.
+
+    Keyword arguments:
+        number -- an integer >= 0
+
+    return True if number is 0b1
+    """
+
     if number == 0:
         return True
     if number == 1:
+        # edge case. List explicitly for clarity. Define to be True
         return True
     else:
         bits_list = bits(number)
@@ -19,6 +28,12 @@ def is_sparse(number):
 
 
 def bits(number):
+    """return list of bits in number
+
+    Keyword arguments:
+        number -- an integer >= 0
+    """
+
     # https://wiki.python.org/moin/BitManipulation
     if number == 0:
         return [0]
