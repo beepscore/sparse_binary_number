@@ -8,27 +8,41 @@ class TestSparseBinaryNumber(unittest.TestCase):
 
     def setUp(self):
         self.sparse_numbers = [
-            0b000000,
-            0b000001,
-            0b000010,
-            0b000100,
-            0b000101,
-            0b001000,
-            0b001001,
-            0b001010,
-            0b010000,
-            0b010001,
-            0b010010,
-            0b010100,
-            0b010101,
-            0b100000,
-            0b100001,
-            0b100010,
-            0b100100,
-            0b100101,
-            0b101000,
-            0b101001,
-            0b101010
+            0b00000000,
+            0b00000001,
+            0b00000010,
+            0b00000100,
+            0b00000101,
+            0b00001000,
+            0b00001001,
+            0b00001010,
+            0b00010000,
+            0b00010001,
+            0b00010010,
+            0b00010100,
+            0b00010101,
+            0b00100000,
+            0b00100001,
+            0b00100010,
+            0b00100100,
+            0b00100101,
+            0b00101000,
+            0b00101001,
+            0b00101010,
+            0b01000000,
+            0b01000001,
+            0b01000010,
+            0b01000100,
+            0b01000101,
+            0b01001000,
+            0b01001001,
+            0b01001010,
+            0b01010000,
+            0b01010001,
+            0b01010010,
+            0b01010100,
+            0b01010101,
+            0b10000000
         ]
 
     def test_bit_at_twos_power(self):
@@ -52,54 +66,8 @@ class TestSparseBinaryNumber(unittest.TestCase):
 
     ###############################
 
-    def sequence_two_power(self, exponent):
-        """return sequence of bit at exponent in sparse number sequence
-        """
-
-        sequence = []
-        for number in self.sparse_numbers:
-            bit = sparse_binary_number.bit_at_twos_power(number, exponent)
-            sequence.append(bit)
-        return sequence
-
     # examine sparse number sequence
     # to help formulate a sparse number generator algorithm
-
-    def test_sequence_two_power0(self):
-        sequence = self.sequence_two_power(0)
-        expected = [0, 1, 0, 0, 1, 0, 1, 0, 0, 1, 0, 0, 1, 0, 1, 0, 0,
-                    1, 0, 1, 0]
-        self.assertEqual(expected, sequence)
-
-    def test_sequence_two_power1(self):
-        sequence = self.sequence_two_power(1)
-        expected = [0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 1, 0,
-                    0, 0, 0, 1]
-        self.assertEqual(expected, sequence)
-
-    def test_sequence_two_power2(self):
-        sequence = self.sequence_two_power(2)
-        expected = [0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 1,
-                    1, 0, 0, 0]
-        self.assertEqual(expected, sequence)
-
-    def test_sequence_two_power3(self):
-        sequence = self.sequence_two_power(3)
-        expected = [0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-                    0, 1, 1, 1]
-        self.assertEqual(expected, sequence)
-
-    def test_sequence_two_power4(self):
-        sequence = self.sequence_two_power(4)
-        expected = [0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0,
-                    0, 0, 0, 0]
-        self.assertEqual(expected, sequence)
-
-    def test_sequence_two_power5(self):
-        sequence = self.sequence_two_power(5)
-        expected = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1,
-                    1, 1, 1, 1]
-        self.assertEqual(expected, sequence)
 
     def sequence_difference(self):
         difference_list = []
@@ -110,16 +78,33 @@ class TestSparseBinaryNumber(unittest.TestCase):
         return difference_list
 
     def test_sequence_difference(self):
-        sequence = self.sequence_difference()
+        difference_list = self.sequence_difference()
         expected = [
             1,
             2,
             4, 5,
             8, 9, 10,
             16, 17, 18, 20, 21,
-            32, 33, 34, 36, 37, 40, 41, 42
+            32, 33, 34, 36, 37, 40, 41, 42,
+            64, 65, 66, 68, 69, 72, 73, 74, 80, 81, 82, 84, 85,
+            128
         ]
-        self.assertEqual(expected, sequence)
+        self.assertEqual(expected, difference_list)
+        # expand elements as powers of 2 to make pattern clearer
+        expected_expanded = [
+            1,
+            2,
+            4, 4 + 1,
+            8, 8 + 1, 8 + 2,
+            16, 16 + 1, 16 + 2, 16 + 4, 16 + 4 + 1,
+            32, 32 + 1, 32 + 2, 32 + 4, 32 + 4 + 1,
+            32 + 8, 32 + 8 + 1, 32 + 8 + 2,
+            64, 64 + 1, 64 + 2, 64 + 4, 64 + 4 + 1,
+            64 + 8, 64 + 8 + 1, 64 + 8 + 2,
+            64 + 16, 64 + 16 + 1, 64 + 16 + 2, 64 + 16 + 4, 64 + 16 + 4 + 1,
+            128
+        ]
+        self.assertEqual(expected_expanded, difference_list)
 
     ###############################
 
@@ -172,8 +157,9 @@ class TestSparseBinaryNumber(unittest.TestCase):
     def test_next_sparse(self):
         for index in range(1, len(self.sparse_numbers)):
             number = self.sparse_numbers[index - 1]
+            actual = sparse_binary_number.next_sparse(number)
             expected = self.sparse_numbers[index]
-            self.assertEqual(expected, sparse_binary_number.next_sparse(number),
+            self.assertEqual(expected, actual,
                              "expected {0} for number 0b{1:b}"
                              .format(str(expected), number))
 
@@ -184,7 +170,8 @@ class TestSparseBinaryNumber(unittest.TestCase):
             (2 ** 32 + 1, None)
         ]
         for (number, expected) in test_data:
-            self.assertEqual(expected, sparse_binary_number.next_sparse(number),
+            actual = sparse_binary_number.next_sparse(number)
+            self.assertEqual(expected, actual,
                              "expected {0} for number 0b{1:b}"
                              .format(str(expected), number))
 
