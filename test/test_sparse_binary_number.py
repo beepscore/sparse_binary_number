@@ -67,32 +67,38 @@ class TestSparseBinaryNumber(unittest.TestCase):
 
     def test_sequence_two_power0(self):
         sequence = self.sequence_two_power(0)
-        expected = [0, 1, 0, 0, 1, 0, 1, 0, 0, 1, 0, 0, 1, 0, 1, 0, 0, 1, 0, 1, 0]
+        expected = [0, 1, 0, 0, 1, 0, 1, 0, 0, 1, 0, 0, 1, 0, 1, 0, 0,
+                    1, 0, 1, 0]
         self.assertEqual(expected, sequence)
 
     def test_sequence_two_power1(self):
         sequence = self.sequence_two_power(1)
-        expected = [0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1]
+        expected = [0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 1, 0,
+                    0, 0, 0, 1]
         self.assertEqual(expected, sequence)
 
     def test_sequence_two_power2(self):
         sequence = self.sequence_two_power(2)
-        expected = [0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 1, 1, 0, 0, 0]
+        expected = [0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 1,
+                    1, 0, 0, 0]
         self.assertEqual(expected, sequence)
 
     def test_sequence_two_power3(self):
         sequence = self.sequence_two_power(3)
-        expected = [0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1]
+        expected = [0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                    0, 1, 1, 1]
         self.assertEqual(expected, sequence)
 
     def test_sequence_two_power4(self):
         sequence = self.sequence_two_power(4)
-        expected = [0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0]
+        expected = [0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0,
+                    0, 0, 0, 0]
         self.assertEqual(expected, sequence)
 
     def test_sequence_two_power5(self):
         sequence = self.sequence_two_power(5)
-        expected = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1]
+        expected = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1,
+                    1, 1, 1, 1]
         self.assertEqual(expected, sequence)
 
     def sequence_difference(self):
