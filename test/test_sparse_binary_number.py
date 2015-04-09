@@ -33,26 +33,27 @@ class TestSparseBinaryNumber(unittest.TestCase):
 
     def setUp(self):
         self.test_data_next_sparse = [
-            (0, 1),
-            (0b1, 0b10),
-            (0b10, 0b100),
-            (0b100, 0b101),
-            (0b101, 0b1000),
-            (0b1000, 0b1001),
-            (0b1001, 0b1010),
-            (0b1010, 0b10000),
-            (0b10000, 0b10001),
-            (0b10001, 0b10010),
-            (0b10010, 0b10100),
-            (0b10100, 0b10101),
-            (0b10101, 0b100000),
-            (0b100000, 0b100001),
-            (0b100001, 0b100010),
-            (0b100010, 0b100100),
-            (0b100100, 0b100101),
-            (0b100101, 0b101000),
-            (0b101000, 0b101001),
-            (0b101001, 0b101010)
+            0,
+            0b1,
+            0b10,
+            0b100,
+            0b101,
+            0b1000,
+            0b1001,
+            0b1010,
+            0b10000,
+            0b10001,
+            0b10010,
+            0b10100,
+            0b10101,
+            0b100000,
+            0b100001,
+            0b100010,
+            0b100100,
+            0b100101,
+            0b101000,
+            0b101001,
+            0b101010
         ]
 
     def test_bit_at_twos_power(self):
@@ -81,7 +82,7 @@ class TestSparseBinaryNumber(unittest.TestCase):
         """
 
         sequence = []
-        for (number, expected) in self.test_data_next_sparse:
+        for number in self.test_data_next_sparse:
             bit = sparse_binary_number.bit_at_twos_power(number, exponent)
             sequence.append(bit)
         return sequence
@@ -91,32 +92,32 @@ class TestSparseBinaryNumber(unittest.TestCase):
 
     def test_sequence_two_power0(self):
         sequence = self.sequence_two_power(0)
-        expected = [0, 1, 0, 0, 1, 0, 1, 0, 0, 1, 0, 0, 1, 0, 1, 0, 0, 1, 0, 1]
+        expected = [0, 1, 0, 0, 1, 0, 1, 0, 0, 1, 0, 0, 1, 0, 1, 0, 0, 1, 0, 1, 0]
         self.assertEqual(expected, sequence)
 
     def test_sequence_two_power1(self):
         sequence = self.sequence_two_power(1)
-        expected = [0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0]
+        expected = [0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1]
         self.assertEqual(expected, sequence)
 
     def test_sequence_two_power2(self):
         sequence = self.sequence_two_power(2)
-        expected = [0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 1, 1, 0, 0]
+        expected = [0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 1, 1, 0, 0, 0]
         self.assertEqual(expected, sequence)
 
     def test_sequence_two_power3(self):
         sequence = self.sequence_two_power(3)
-        expected = [0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1]
+        expected = [0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1]
         self.assertEqual(expected, sequence)
 
     def test_sequence_two_power4(self):
         sequence = self.sequence_two_power(4)
-        expected = [0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0]
+        expected = [0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0]
         self.assertEqual(expected, sequence)
 
     def test_sequence_two_power5(self):
         sequence = self.sequence_two_power(5)
-        expected = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1]
+        expected = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1]
         self.assertEqual(expected, sequence)
 
     ###############################
@@ -168,7 +169,9 @@ class TestSparseBinaryNumber(unittest.TestCase):
                              .format(str(expected), number))
 
     def test_next_sparse(self):
-        for (number, expected) in self.test_data_next_sparse:
+        for index in range(1, len(self.test_data_next_sparse)):
+            number = self.test_data_next_sparse[index - 1]
+            expected = self.test_data_next_sparse[index]
             self.assertEqual(expected, sparse_binary_number.next_sparse(number),
                              "expected {0} for number 0b{1:b}"
                              .format(str(expected), number))
