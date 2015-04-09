@@ -95,6 +95,26 @@ class TestSparseBinaryNumber(unittest.TestCase):
         expected = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1]
         self.assertEqual(expected, sequence)
 
+    def sequence_difference(self):
+        difference_list = []
+        for index in range(1, len(self.sparse_numbers)):
+            difference = self.sparse_numbers[index]
+            - self.sparse_numbers[index - 1]
+            difference_list.append(difference)
+        return difference_list
+
+    def test_sequence_difference(self):
+        sequence = self.sequence_difference()
+        expected = [
+            1,
+            2,
+            4, 5,
+            8, 9, 10,
+            16, 17, 18, 20, 21,
+            32, 33, 34, 36, 37, 40, 41, 42
+        ]
+        self.assertEqual(expected, sequence)
+
     ###############################
 
     def test_bits_list_0(self):
