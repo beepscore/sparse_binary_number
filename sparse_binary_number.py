@@ -79,5 +79,7 @@ def bit_at_twos_power(number, exponent):
     bits = bits_list(number)
     # NOTE: reverse() modifies object, returns None
     bits.reverse()
-    bit = bits[exponent]
-    return bit
+    if exponent > (len(bits) - 1):
+        return 0
+    else:
+        return bits[exponent]
