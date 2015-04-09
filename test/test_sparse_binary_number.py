@@ -6,6 +6,31 @@ import sparse_binary_number
 
 class TestSparseBinaryNumber(unittest.TestCase):
 
+    """
+    sparse number sequence
+    000000
+    000001
+    000010
+    000100
+    000101
+    001000
+    001001
+    001010
+    010000
+    010001
+    010010
+    010100
+    010101
+    100000
+    100001
+    100010
+    100100
+    100101
+    101000
+    101001
+    ...
+    """
+
     def setUp(self):
         self.test_data_next_sparse = [
             (0, 1),
@@ -67,6 +92,21 @@ class TestSparseBinaryNumber(unittest.TestCase):
     def test_sequence_two_power0(self):
         sequence = self.sequence_two_power(0)
         expected = [0, 1, 0, 0, 1, 0, 1, 0, 0, 1, 0, 0, 1, 0, 1, 0, 0, 1, 0, 1]
+        self.assertEqual(expected, sequence)
+
+    def test_sequence_two_power1(self):
+        sequence = self.sequence_two_power(1)
+        expected = [0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0]
+        self.assertEqual(expected, sequence)
+
+    def test_sequence_two_power2(self):
+        sequence = self.sequence_two_power(2)
+        expected = [0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 1, 1, 0, 0]
+        self.assertEqual(expected, sequence)
+
+    def test_sequence_two_power3(self):
+        sequence = self.sequence_two_power(3)
+        expected = [0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1]
         self.assertEqual(expected, sequence)
 
     ###############################
