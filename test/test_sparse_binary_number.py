@@ -7,7 +7,30 @@ import sparse_binary_number
 class TestSparseBinaryNumber(unittest.TestCase):
 
     def setUp(self):
-        pass
+        self.test_data_next_sparse = [
+            (0, 1),
+            (0b1, 0b10),
+            (0b10, 0b100),
+            (0b100, 0b101),
+            (4, 0b101),
+            (0b101, 0b1000),
+            (0b1000, 0b1001),
+            (0b1001, 0b1010),
+            (0b1010, 0b10000),
+            (0b10000, 0b10001),
+            (0b10001, 0b10010),
+            (0b10010, 0b10100),
+            (0b10100, 0b10101),
+            (0b10101, 0b100000),
+            (0b100000, 0b100001),
+            (0b100001, 0b100010),
+            (0b100010, 0b100100),
+            (0b100100, 0b100101),
+            (0b100101, 0b101000),
+            (0b101000, 0b101001),
+            (0b101001, 0b101010),
+            (0b1000010010001010001, 0b1000010010001010010)
+        ]
 
     def test_bits_list_0(self):
         self.assertEqual([0], sparse_binary_number.bits_list(0))
@@ -56,31 +79,7 @@ class TestSparseBinaryNumber(unittest.TestCase):
                              .format(str(expected), number))
 
     def test_next_sparse(self):
-        test_data = [
-            (0, 1),
-            (0b1, 0b10),
-            (0b10, 0b100),
-            (0b100, 0b101),
-            (4, 0b101),
-            (0b101, 0b1000),
-            (0b1000, 0b1001),
-            (0b1001, 0b1010),
-            (0b1010, 0b10000),
-            (0b10000, 0b10001),
-            (0b10001, 0b10010),
-            (0b10010, 0b10100),
-            (0b10100, 0b10101),
-            (0b10101, 0b100000),
-            (0b100000, 0b100001),
-            (0b100001, 0b100010),
-            (0b100010, 0b100100),
-            (0b100100, 0b100101),
-            (0b100101, 0b101000),
-            (0b101000, 0b101001),
-            (0b101001, 0b101010),
-            (0b1000010010001010001, 0b1000010010001010010)
-        ]
-        for (number, expected) in test_data:
+        for (number, expected) in self.test_data_next_sparse:
             self.assertEqual(expected, sparse_binary_number.next_sparse(number),
                              "expected {0} for number 0b{1:b}"
                              .format(str(expected), number))
