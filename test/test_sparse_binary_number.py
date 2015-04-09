@@ -12,7 +12,6 @@ class TestSparseBinaryNumber(unittest.TestCase):
             (0b1, 0b10),
             (0b10, 0b100),
             (0b100, 0b101),
-            (4, 0b101),
             (0b101, 0b1000),
             (0b1000, 0b1001),
             (0b1001, 0b1010),
@@ -28,9 +27,42 @@ class TestSparseBinaryNumber(unittest.TestCase):
             (0b100100, 0b100101),
             (0b100101, 0b101000),
             (0b101000, 0b101001),
-            (0b101001, 0b101010),
-            (0b1000010010001010001, 0b1000010010001010010)
+            (0b101001, 0b101010)
         ]
+
+    def test_bit_at_twos_power(self):
+        # expected, number, twos_power
+        number = 0b11001101
+        self.assertEqual(1, sparse_binary_number.bit_at_twos_power(number, 0))
+        self.assertEqual(0, sparse_binary_number.bit_at_twos_power(number, 1))
+        self.assertEqual(1, sparse_binary_number.bit_at_twos_power(number, 2))
+        self.assertEqual(1, sparse_binary_number.bit_at_twos_power(number, 3))
+        self.assertEqual(0, sparse_binary_number.bit_at_twos_power(number, 4))
+        self.assertEqual(0, sparse_binary_number.bit_at_twos_power(number, 5))
+        self.assertEqual(1, sparse_binary_number.bit_at_twos_power(number, 6))
+        self.assertEqual(1, sparse_binary_number.bit_at_twos_power(number, 7))
+
+    ###############################
+
+    def sequence_two_power(self, exponent):
+        """return sequence of bit at exponent in sparse number sequence
+        """
+
+        sequence = []
+        for (number, expected) in self.test_data_next_sparse:
+            bit = sparse_binary_number.bit_at_twos_power(number, exponent)
+            sequence.append(bit)
+        return sequence
+
+    # examine sparse number sequence
+    # to help formulate a sparse number generator algorithm
+
+    def test_sequence_two_power0(self):
+        sequence = self.sequence_two_power(0)
+        expected = [0, 1, 0, 0, 1, 0, 1, 0, 0, 1, 0, 0, 1, 0, 1, 0, 0, 1, 0, 1]
+        self.assertEqual(expected, sequence)
+
+    ###############################
 
     def test_bits_list_0(self):
         self.assertEqual([0], sparse_binary_number.bits_list(0))
