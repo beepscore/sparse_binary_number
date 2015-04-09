@@ -32,7 +32,7 @@ class TestSparseBinaryNumber(unittest.TestCase):
     """
 
     def setUp(self):
-        self.test_data_next_sparse = [
+        self.sparse_numbers = [
             0,
             0b1,
             0b10,
@@ -82,7 +82,7 @@ class TestSparseBinaryNumber(unittest.TestCase):
         """
 
         sequence = []
-        for number in self.test_data_next_sparse:
+        for number in self.sparse_numbers:
             bit = sparse_binary_number.bit_at_twos_power(number, exponent)
             sequence.append(bit)
         return sequence
@@ -169,9 +169,9 @@ class TestSparseBinaryNumber(unittest.TestCase):
                              .format(str(expected), number))
 
     def test_next_sparse(self):
-        for index in range(1, len(self.test_data_next_sparse)):
-            number = self.test_data_next_sparse[index - 1]
-            expected = self.test_data_next_sparse[index]
+        for index in range(1, len(self.sparse_numbers)):
+            number = self.sparse_numbers[index - 1]
+            expected = self.sparse_numbers[index]
             self.assertEqual(expected, sparse_binary_number.next_sparse(number),
                              "expected {0} for number 0b{1:b}"
                              .format(str(expected), number))
