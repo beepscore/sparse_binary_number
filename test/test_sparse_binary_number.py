@@ -62,7 +62,10 @@ class TestSparseBinaryNumber(unittest.TestCase):
         number = 0b01
         self.assertEqual(1, sparse_binary_number.bit_at_twos_power(number, 0))
         self.assertEqual(0, sparse_binary_number.bit_at_twos_power(number, 1))
-        self.assertEqual(0, sparse_binary_number.bit_at_twos_power(number, 2))
+
+    def test_bit_at_twos_power_higher_than_most_significant_bit(self):
+        self.assertEqual(0, sparse_binary_number.bit_at_twos_power(0b01, 8))
+        self.assertEqual(0, sparse_binary_number.bit_at_twos_power(0b01, 12))
 
     ###############################
 
