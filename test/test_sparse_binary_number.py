@@ -166,25 +166,25 @@ class TestSparseBinaryNumber(unittest.TestCase):
                              "expected 0b{0:b} for next_sparse(0b{1:b}) but got 0b{2:b}"
                              .format(expected, number, actual))
 
-    def test_next_sparse_efficient(self):
+    def test_next_sparse_incremental(self):
         for index in range(1, len(self.sparse_numbers)):
             number = self.sparse_numbers[index - 1]
-            actual = sparse_binary_number.next_sparse_efficient(number)
+            actual = sparse_binary_number.next_sparse_incremental(number)
             expected = self.sparse_numbers[index]
             self.assertEqual(expected, actual,
-                             "expected 0b{0:b} for next_sparse(0b{1:b}) but got 0b{2:b}"
+                             "expected 0b{0:b} for next_sparse_incremental(0b{1:b}) but got 0b{2:b}"
                              .format(expected, number, actual))
 
-    def test_next_sparse_limit_returns_none(self):
+    def test_next_sparse_incremental_limit_returns_none(self):
         test_data = [
             (2 ** 32 - 1, None),
             (2 ** 32, None),
             (2 ** 32 + 1, None)
         ]
         for (number, expected) in test_data:
-            actual = sparse_binary_number.next_sparse(number)
+            actual = sparse_binary_number.next_sparse_incremental(number)
             self.assertEqual(expected, actual,
-                             "expected {0} for number 0b{1:b}"
+                             "expected {0} for next_sparse_incremental(0b{1:b})"
                              .format(str(expected), number))
 
     def test_twos_power_max(self):

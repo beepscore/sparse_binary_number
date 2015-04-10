@@ -1,11 +1,12 @@
 #!/usr/bin/env python3
 
 
-def next_sparse_efficient(sparse_number):
+def next_sparse(sparse_number):
     """return next larger sparse number
 
     Keyword arguments:
         sparse_number -- a sparse number, as defined by is_sparse
+        This algorithm uses powers of two. Estimated time complexity >= O(log(n)).
     """
 
     # print("sparse_number 0b{0:b}".format(sparse_number))
@@ -30,18 +31,18 @@ def next_sparse_efficient(sparse_number):
     return (2 ** (power_max + 1))
 
 
-def next_sparse(sparse_number):
+def next_sparse_incremental(sparse_number):
     """return next larger sparse number
 
     Keyword arguments:
         sparse_number -- a sparse number, as defined by is_sparse
 
     return None if reached internal limit without finding a next sparse.
+
+    This algorithm uses "brute force". Estimated time complexity >= O(n).
+    Increments until possible_sparse is_sparse or reaches limit.
     """
 
-    # increment until possible_sparse is_sparse or reach limit.
-    # This algorithm uses "brute force".
-    # TODO: make algorithm more efficient
 
     # limit is arbitrary in Python
     # http://stackoverflow.com/questions/5470693/python-number-limit
