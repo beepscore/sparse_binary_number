@@ -83,3 +83,14 @@ def bit_at_twos_power(number, exponent):
         return 0
     else:
         return bits[exponent]
+
+
+def twos_power_max(number):
+    """return highest power of two in number
+
+    Keyword arguments:
+        number -- an integer >= 0
+    """
+
+    bits = bits_list(number)
+    return len(bits) - 1

@@ -175,6 +175,13 @@ class TestSparseBinaryNumber(unittest.TestCase):
                              "expected {0} for number 0b{1:b}"
                              .format(str(expected), number))
 
+    def test_twos_power_max(self):
+        self.assertEqual(0, sparse_binary_number.twos_power_max(0))
+        self.assertEqual(0, sparse_binary_number.twos_power_max(0b1))
+        self.assertEqual(0, sparse_binary_number.twos_power_max(0b01))
+        self.assertEqual(1, sparse_binary_number.twos_power_max(0b11))
+        self.assertEqual(3, sparse_binary_number.twos_power_max(0b01011))
+
 
 if __name__ == "__main__":
     unittest.main()
