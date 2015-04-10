@@ -66,3 +66,20 @@ def bits_list(number):
         # list comprehension
         bits = [int(bit_character) for bit_character in bits_string]
         return bits
+
+
+def bit_at_twos_power(number, exponent):
+    """return bit in number at location 2 ** exponent
+
+    Keyword arguments:
+        number -- an integer >= 0
+        exponent -- a integer >= 0
+    """
+
+    bits = bits_list(number)
+    # NOTE: reverse() modifies object, returns None
+    bits.reverse()
+    if exponent > (len(bits) - 1):
+        return 0
+    else:
+        return bits[exponent]

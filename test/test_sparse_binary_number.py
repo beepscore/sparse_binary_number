@@ -45,6 +45,25 @@ class TestSparseBinaryNumber(unittest.TestCase):
             0b10000000
         ]
 
+    def test_bit_at_twos_power(self):
+        # expected, number, twos_power
+        number = 0b11001101
+        self.assertEqual(1, sparse_binary_number.bit_at_twos_power(number, 0))
+        self.assertEqual(0, sparse_binary_number.bit_at_twos_power(number, 1))
+        self.assertEqual(1, sparse_binary_number.bit_at_twos_power(number, 2))
+        self.assertEqual(1, sparse_binary_number.bit_at_twos_power(number, 3))
+        self.assertEqual(0, sparse_binary_number.bit_at_twos_power(number, 4))
+        self.assertEqual(0, sparse_binary_number.bit_at_twos_power(number, 5))
+        self.assertEqual(1, sparse_binary_number.bit_at_twos_power(number, 6))
+        self.assertEqual(1, sparse_binary_number.bit_at_twos_power(number, 7))
+
+    def test_bit_at_twos_power_leading_zeros(self):
+        # expected, number, twos_power
+        number = 0b01
+        self.assertEqual(1, sparse_binary_number.bit_at_twos_power(number, 0))
+        self.assertEqual(0, sparse_binary_number.bit_at_twos_power(number, 1))
+        self.assertEqual(0, sparse_binary_number.bit_at_twos_power(number, 2))
+
     ###############################
 
     # examine sparse number sequence
