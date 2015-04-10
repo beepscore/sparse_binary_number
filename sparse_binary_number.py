@@ -121,8 +121,16 @@ def is_bit_no_right_one(number, exponent):
 
 
 def is_bit_no_left_one(number, exponent):
-    if (exponent == 0
-            or bit_at_twos_power(number, exponent + 1) == 0):
+    if bit_at_twos_power(number, exponent + 1) == 0:
+        return True
+    else:
+        return False
+
+
+def is_right_end_of_001(number, exponent):
+    if (bit_at_twos_power(number, exponent) == 1
+            and bit_at_twos_power(number, exponent + 1) == 0
+            and bit_at_twos_power(number, exponent + 2) == 0):
         return True
     else:
         return False

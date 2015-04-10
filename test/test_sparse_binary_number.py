@@ -182,28 +182,37 @@ class TestSparseBinaryNumber(unittest.TestCase):
         self.assertEqual(0, sparse_binary_number.twos_power_max(0))
         self.assertEqual(0, sparse_binary_number.twos_power_max(0b1))
         self.assertEqual(0, sparse_binary_number.twos_power_max(0b01))
+        self.assertEqual(1, sparse_binary_number.twos_power_max(0b10))
         self.assertEqual(1, sparse_binary_number.twos_power_max(0b11))
         self.assertEqual(3, sparse_binary_number.twos_power_max(0b01011))
 
     def test_is_zero_bit_and_no_neighbor_ones(self):
         self.assertEqual(True,
                          sparse_binary_number.is_zero_bit_and_no_neighbor_ones(0b0, 0))
+        self.assertEqual(False,
+                         sparse_binary_number.is_zero_bit_and_no_neighbor_ones(0b1, 0))
+        self.assertEqual(False,
+                         sparse_binary_number.is_zero_bit_and_no_neighbor_ones(0b001, 1))
+        self.assertEqual(False,
+                         sparse_binary_number.is_zero_bit_and_no_neighbor_ones(0b10, 0))
+        self.assertEqual(False,
+                         sparse_binary_number.is_zero_bit_and_no_neighbor_ones(0b10, 1))
+        self.assertEqual(False,
+                         sparse_binary_number.is_zero_bit_and_no_neighbor_ones(0b010, 1))
         self.assertEqual(True,
                          sparse_binary_number.is_zero_bit_and_no_neighbor_ones(0b100, 0))
         self.assertEqual(True,
                          sparse_binary_number.is_zero_bit_and_no_neighbor_ones(0b1010001, 2))
-        self.assertEqual(False,
-                         sparse_binary_number.is_zero_bit_and_no_neighbor_ones(0b1, 0))
-        self.assertEqual(False,
-                         sparse_binary_number.is_zero_bit_and_no_neighbor_ones(0b010, 1))
-        self.assertEqual(False,
-                         sparse_binary_number.is_zero_bit_and_no_neighbor_ones(0b001, 1))
 
     def test_is_bit_no_neighbor_ones(self):
         self.assertEqual(True,
                          sparse_binary_number.is_bit_no_neighbor_ones(0b0, 0))
         self.assertEqual(True,
                          sparse_binary_number.is_bit_no_neighbor_ones(0b1, 0))
+        self.assertEqual(False,
+                         sparse_binary_number.is_bit_no_neighbor_ones(0b10, 0))
+        self.assertEqual(True,
+                         sparse_binary_number.is_bit_no_neighbor_ones(0b10, 1))
         self.assertEqual(True,
                          sparse_binary_number.is_bit_no_neighbor_ones(0b010, 1))
         self.assertEqual(False,
@@ -216,10 +225,16 @@ class TestSparseBinaryNumber(unittest.TestCase):
         self.assertEqual(True, sparse_binary_number.is_bit_no_right_one(0b1, 0))
         self.assertEqual(False,
                          sparse_binary_number.is_bit_no_right_one(0b01, 1))
+        self.assertEqual(True,
+                         sparse_binary_number.is_bit_no_right_one(0b10, 1))
 
     def test_is_bit_no_left_one(self):
         self.assertEqual(True, sparse_binary_number.is_bit_no_left_one(0b0, 0))
         self.assertEqual(True, sparse_binary_number.is_bit_no_left_one(0b1, 0))
+        self.assertEqual(False,
+                         sparse_binary_number.is_bit_no_left_one(0b10, 0))
+        self.assertEqual(True,
+                         sparse_binary_number.is_bit_no_left_one(0b10, 1))
         self.assertEqual(True,
                          sparse_binary_number.is_bit_no_left_one(0b11, 1))
         self.assertEqual(False,
