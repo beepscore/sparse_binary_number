@@ -94,3 +94,35 @@ def twos_power_max(number):
 
     bits = bits_list(number)
     return len(bits) - 1
+
+
+def is_zero_bit_and_no_neighbor_ones(number, exponent):
+    if (bit_at_twos_power(number, exponent) == 0
+            and is_bit_no_neighbor_ones(number, exponent)):
+        return True
+    else:
+        return False
+
+
+def is_bit_no_neighbor_ones(number, exponent):
+    if (is_bit_no_right_one(number, exponent)
+            and is_bit_no_left_one(number, exponent)):
+        return True
+    else:
+        return False
+
+
+def is_bit_no_right_one(number, exponent):
+    if (exponent == 0
+            or bit_at_twos_power(number, exponent - 1) == 0):
+        return True
+    else:
+        return False
+
+
+def is_bit_no_left_one(number, exponent):
+    if (exponent == 0
+            or bit_at_twos_power(number, exponent + 1) == 0):
+        return True
+    else:
+        return False
