@@ -1,6 +1,35 @@
 #!/usr/bin/env python3
 
 
+def next_sparse_efficient(sparse_number):
+    """return next larger sparse number
+
+    Keyword arguments:
+        sparse_number -- a sparse number, as defined by is_sparse
+    """
+
+    # print("sparse_number 0b{0:b}".format(sparse_number))
+
+    # Edge case. Handle explicitly for clarity
+    if sparse_number == 0:
+        return 1
+
+    power_max = twos_power_max(sparse_number)
+
+    for power in range(0, power_max):
+        # print("power", power)
+        if is_zero_bit_and_no_neighbor_ones(sparse_number, power):
+            # print("at middle of 000 change to 010")
+            return sparse_number + (2 ** power)
+        if is_right_end_of_001(sparse_number, power):
+            # print("at right of 001 change to 01 followed by all zeros")
+            sparse_zeroed_low_bits = (sparse_number >> (power + 1)) * (2 ** (power + 1))
+            # print("sparse_zeroed_low_bits {0:b}".format(sparse_zeroed_low_bits))
+            return sparse_zeroed_low_bits + (2 ** (power + 1))
+
+    return (2 ** (power_max + 1))
+
+
 def next_sparse(sparse_number):
     """return next larger sparse number
 
